@@ -142,7 +142,7 @@ $('st').textContent=x;
 var pts=[];for(var tt=0;tt<=Math.min(t,END);tt+=.05)pts.push((30+tt/END*315).toFixed(1)+','+gy(V(tt,s)).toFixed(1));
 if(t<=0)pts=['30,'+gy(-70)];
 $('v').setAttribute('points',pts.join(' '))}
-function frame(n){if(!run)return;var t=(n-t0)/1000;if(t>=END){render(END);run=false;go.textContent='Повторить';return}render(t);requestAnimationFrame(frame)}
+function frame(n){if(!run)return;var t=Math.max(0,(n-t0)/1000);if(t>=END){render(END);run=false;go.textContent='Повторить';return}render(t);requestAnimationFrame(frame)}
 go.onclick=function(){if(run)return;run=true;t0=performance.now();go.textContent='Идёт передача…';requestAnimationFrame(frame)};
 str.oninput=function(){$('out').textContent=str.value+' из 9';if(!run)render(0)};
 render(0)})();
@@ -170,7 +170,7 @@ else if(reps<5)x='Нейроны, которые срабатывают вмес
 else x='Синапсы на этом пути работают всё эффективнее, а остальные связи остаются тонкими.';
 $('st').textContent=x}
 function frame(n){
-var t=(n-t0)/1000,p=$('p'),g0=$('g0'),g1=$('g1'),g2=$('g2'),x,y,po=0,q;
+var t=Math.max(0,(n-t0)/1000),p=$('p'),g0=$('g0'),g1=$('g1'),g2=$('g2'),x,y,po=0,q;
 if(t>=1.6){[p,g0,g1,g2].forEach(function(o){o.setAttribute('opacity',0)});run=false;render();return}
 if(t<.2)g0.setAttribute('opacity',cl(t/.1)*.9);
 else if(t<.7){q=(t-.2)/.5;x=N1[0][0]+(N2[1][0]-N1[0][0])*q;y=N1[0][1]+(N2[1][1]-N1[0][1])*q;po=1;g0.setAttribute('opacity',.9*(1-cl((t-.2)/.3)))}
@@ -203,7 +203,7 @@ $('hP').textContent=Math.round(h*100)+'%';$('cP').textContent=Math.round(c*100)+
 $('st').textContent=txt;$('clkT').textContent=label;$('clk').setAttribute('fill',label==='Ночь'?'#7F77DD':'#EF9F27')}
 function clr(){hG.concat(cG).forEach(function(g){g.setAttribute('opacity',0)});$('p').setAttribute('opacity',0)}
 function frame(now){
-if(!anim)return;var t=(now-anim.t0)/1000,p=$('p');
+if(!anim)return;var t=Math.max(0,(now-anim.t0)/1000),p=$('p');
 if(anim.type==='day'){
 if(t>=2.2){h=anim.tgt;anim=null;clr();txt='День: новая информация быстро записывается в гиппокамп, но запись пока непрочная.';render();return}
 h=anim.h0+(anim.tgt-anim.h0)*cl(t/2);
