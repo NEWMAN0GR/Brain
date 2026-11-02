@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Как работает мозг: нейроны, обучение и память</title>
+<style>
+:root{--bg:#fff;--fg:#1f1e1d;--fg2:#5f5e5a;--surf:#f4f3ee;--bd:#d8d6cd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1f1e1d;--fg:#f1efe8;--fg2:#b4b2a9;--surf:#2c2c2a;--bd:#444441}}
+:root[data-theme="dark"]{--bg:#1f1e1d;--fg:#f1efe8;--fg2:#b4b2a9;--surf:#2c2c2a;--bd:#444441}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:560px;margin:0 auto;padding:24px 16px 56px}
+h1{font-size:26px;line-height:1.25;font-weight:500;margin:0 0 12px}
+h2{font-size:20px;font-weight:500;margin:44px 0 8px;padding-top:24px;border-top:1px solid var(--bd)}
+p{margin:0 0 12px}
+.sub{color:var(--fg2)}
+svg{display:block;width:100%;max-width:420px;margin:0 auto}
+.lb{font-size:12px;fill:var(--fg2)}
+.pu{fill:#7F77DD;fill-opacity:.3;stroke:#7F77DD;stroke-width:1.5}
+.te{fill:#1D9E75;fill-opacity:.3;stroke:#1D9E75;stroke-width:1.5}
+.co{fill:#D85A30;fill-opacity:.3;stroke:#D85A30;stroke-width:1.5}
+.am{fill:#EF9F27;fill-opacity:.35;stroke:#BA7517;stroke-width:1.5}
+.gy{fill:#888780;fill-opacity:.5;stroke:#888780;stroke-width:1}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.card{background:var(--surf);border-radius:8px;padding:12px 14px}
+.card small{display:block;font-size:13px;color:var(--fg2);line-height:1.4}
+.card b{font-size:24px;font-weight:500}
+.st{min-height:72px;margin:8px 0 12px;font-size:15px;line-height:1.5}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px}
+.row label{font-size:14px;color:var(--fg2);white-space:nowrap}
+.row output{font-size:14px;font-weight:500;min-width:44px}
+button{flex:1;min-width:110px;padding:10px 12px;font:inherit;font-size:15px;color:var(--fg);background:transparent;border:1px solid var(--bd);border-radius:8px;cursor:pointer}
+button:active{transform:scale(.98)}
+input[type=range]{flex:1;accent-color:#7F77DD}
+footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--bd);font-size:14px;color:var(--fg2)}
+</style></head><body><main>
+<h1>Как работает мозг: нейроны, обучение и память</h1>
+<p class="sub">Три интерактивные анимации о том, как нервная клетка передаёт сигнал, как нейроны учатся и почему важен сон. Нажимайте кнопки и двигайте ползунки.</p>
+
+<h2>1. Как нейрон передаёт сигнал</h2>
+<p>Дендриты собирают сигналы от других нейронов. Если их сумма достигает порога, в теле клетки возникает электрический импульс. Он бежит по аксону, а в окончании запускает выброс нейромедиатора, который передаёт сигнал следующей клетке.</p>
+<svg viewBox="0 0 360 430" role="img" aria-label="Нейрон">
+<g fill="none" stroke="#7F77DD" stroke-width="3" stroke-linecap="round"><path d="M165 96Q140 70 110 50M130 66Q112 68 96 78M110 50Q100 35 92 22M110 50Q118 30 120 14"/><path d="M180 90Q180 60 180 30M180 60Q165 48 155 34M180 60Q196 46 204 34"/><path d="M195 96Q220 70 250 50M230 66Q248 68 264 78M250 50Q260 35 268 22M250 50Q242 30 240 14"/></g>
+<line x1="180" y1="150" x2="180" y2="310" stroke="#888780" stroke-width="4"/>
+<line id="a_hl" x1="180" y1="150" x2="180" y2="150" stroke="#EF9F27" stroke-width="4" stroke-linecap="round"/>
+<g class="am"><rect x="170" y="160" width="20" height="22" rx="8"/><rect x="170" y="190" width="20" height="22" rx="8"/><rect x="170" y="220" width="20" height="22" rx="8"/><rect x="170" y="250" width="20" height="22" rx="8"/></g>
+<g class="pu"><circle cx="180" cy="120" r="32"/><circle cx="180" cy="120" r="11"/></g>
+<circle id="a_soma" cx="180" cy="120" r="32" fill="#EF9F27" opacity="0"/>
+<ellipse class="te" cx="180" cy="312" rx="28" ry="16"/>
+<g id="a_ves" fill="#1D9E75"><circle cx="169" cy="308" r="4"/><circle cx="180" cy="311" r="4"/><circle cx="191" cy="308" r="4"/></g>
+<ellipse class="co" cx="180" cy="396" rx="78" ry="30"/>
+<ellipse id="a_post" cx="180" cy="396" rx="78" ry="30" fill="#EF9F27" opacity="0"/>
+<g class="gy"><rect x="154" y="362" width="10" height="7" rx="2"/><rect x="175" y="360" width="10" height="7" rx="2"/><rect x="196" y="362" width="10" height="7" rx="2"/></g>
+<text x="180" y="404" text-anchor="middle" font-size="12" fill="var(--fg)">Следующий нейрон</text>
+<g id="a_dots"></g><g id="a_nts" fill="#1D9E75"></g>
+<circle id="a_spike" cx="180" cy="150" r="7" fill="#EF9F27" stroke="#854F0B" stroke-width="1.5" opacity="0"/>
+<text class="lb" x="6" y="100">Дендриты</text><text class="lb" x="222" y="124">Тело клетки</text><text class="lb" x="204" y="222">Аксон с миелином</text><text class="lb" x="204" y="334">Окончание аксона</text><text class="lb" x="210" y="352">Синапс</text>
+</svg>
+<div class="st" id="a_st"></div>
+<div class="row"><label for="a_str">Сила стимула</label><input type="range" id="a_str" min="1" max="9" step="1" value="7"><output id="a_out">7 из 9</output></div>
+<div class="row"><button id="a_go">Запустить импульс</button></div>
+<svg viewBox="0 0 360 100" style="margin-top:16px" role="img" aria-label="График потенциала">
+<line x1="30" y1="12" x2="30" y2="82" stroke="var(--bd)"/><line x1="30" y1="82" x2="345" y2="82" stroke="var(--bd)"/>
+<line x1="30" y1="63" x2="345" y2="63" stroke="#E24B4A" stroke-dasharray="4 4"/>
+<text class="lb" x="34" y="59" style="font-size:11px">порог −55 мВ</text><text class="lb" x="34" y="96" style="font-size:11px">время</text><text class="lb" x="2" y="16" style="font-size:11px">+40</text><text class="lb" x="2" y="76" style="font-size:11px">−70</text>
+<polyline id="a_v" fill="none" stroke="#EF9F27" stroke-width="2.5" stroke-linejoin="round" points=""/>
+</svg>
+<p class="sub" style="margin-top:8px">Попробуйте силу стимула 4 и ниже: порог не будет достигнут, и импульса не возникнет. Нейрон работает по принципу «всё или ничего».</p>
+
+<h2>2. Как нейроны учатся</h2>
+<p>Нейроны, которые срабатывают вместе, укрепляют связь между собой. Чем чаще повторяется один и тот же путь сигнала, тем толще и сильнее становится эта связь. Так формируются навыки и привычки. Связи, которыми не пользуются, постепенно слабеют.</p>
+<svg viewBox="0 0 360 400" role="img" aria-label="Сеть нейронов">
+<g id="b_e" stroke="#7F77DD" stroke-linecap="round"></g>
+<g class="pu"><circle cx="90" cy="50" r="16"/><circle cx="180" cy="50" r="16"/><circle cx="270" cy="50" r="16"/><circle cx="55" cy="190" r="16"/><circle cx="135" cy="190" r="16"/><circle cx="225" cy="190" r="16"/><circle cx="305" cy="190" r="16"/></g>
+<g class="te"><circle cx="120" cy="330" r="18"/><circle cx="240" cy="330" r="18"/></g>
+<circle id="b_g0" cx="90" cy="50" r="16" fill="#EF9F27" opacity="0"/><circle id="b_g1" cx="135" cy="190" r="16" fill="#EF9F27" opacity="0"/><circle id="b_g2" cx="120" cy="330" r="18" fill="#EF9F27" opacity="0"/>
+<circle id="b_p" cx="90" cy="50" r="6" fill="#EF9F27" stroke="#854F0B" stroke-width="1.5" opacity="0"/>
+<text class="lb" x="180" y="18" text-anchor="middle">Вход: сигнал от органов чувств</text><text class="lb" x="180" y="382" text-anchor="middle">Выход: реакция</text>
+</svg>
+<div class="cards"><div class="card"><small>Повторений</small><b id="b_reps">0</b></div><div class="card"><small>Сила выделенного пути</small><b id="b_pow">3%</b></div></div>
+<div class="st" id="b_st"></div>
+<div class="row"><button id="b_train">Повторить опыт</button><button id="b_rest">Перерыв</button><button id="b_reset">Сбросить</button></div>
+
+<h2>3. Как мозг запоминает во сне</h2>
+<p>Днём новая информация быстро записывается в гиппокамп, но эта запись непрочная. Ночью гиппокамп снова и снова проигрывает её, передавая коре головного мозга, где воспоминание закрепляется надолго. Чем меньше сна, тем меньше повторов и слабее закрепление.</p>
+<svg viewBox="0 0 360 400" role="img" aria-label="Гиппокамп и кора">
+<rect x="40" y="52" width="280" height="90" rx="12" fill="none" stroke="#D85A30" stroke-dasharray="5 4"/><rect x="30" y="266" width="300" height="106" rx="12" fill="none" stroke="#1D9E75" stroke-dasharray="5 4"/>
+<text class="lb" x="40" y="44">Гиппокамп: быстрая память</text><text class="lb" x="30" y="260">Кора: долгая память</text>
+<g id="c_x" stroke="#888780" stroke-dasharray="3 4" opacity=".5"></g><g id="c_h" stroke="#D85A30" stroke-linecap="round"></g><g id="c_c" stroke="#1D9E75" stroke-linecap="round"></g>
+<g class="co"><circle cx="100" cy="80" r="13"/><circle cx="160" cy="108" r="13"/><circle cx="220" cy="80" r="13"/><circle cx="280" cy="108" r="13"/></g>
+<g class="te"><circle cx="60" cy="300" r="13"/><circle cx="120" cy="328" r="13"/><circle cx="180" cy="300" r="13"/><circle cx="240" cy="328" r="13"/><circle cx="300" cy="300" r="13"/></g>
+<g id="c_gl"></g>
+<circle id="c_p" cx="100" cy="80" r="6" fill="#EF9F27" stroke="#854F0B" stroke-width="1.5" opacity="0"/>
+<circle id="c_clk" cx="180" cy="196" r="15" fill="#EF9F27"/><text id="c_clkT" class="lb" x="180" y="226" text-anchor="middle">Утро</text>
+</svg>
+<div class="cards"><div class="card"><small>Запись в гиппокампе</small><b id="c_hP">0%</b></div><div class="card"><small>Запись в коре</small><b id="c_cP">0%</b></div></div>
+<div class="st" id="c_st"></div>
+<div class="row"><label for="c_hrs">Часы сна</label><input type="range" id="c_hrs" min="2" max="9" step="1" value="8"><output id="c_out">8 ч</output></div>
+<div class="row"><button id="c_day">День</button><button id="c_night">Ночь</button><button id="c_reset">Сбросить</button></div>
+<p class="sub" style="margin-top:8px">Нажмите «День», затем «Ночь». Сравните 3 часа сна с 8–9 часами.</p>
+
+<footer>Это упрощённые модели для наглядности: в реальном мозге около 86 миллиардов нейронов, и процессы в нём намного сложнее.</footer>
+</main>
+<script>
+var NS='http://www.w3.org/2000/svg';
+function cl(x){return Math.max(0,Math.min(1,x))}
+function ln(g,a,b){var l=document.createElementNS(NS,'line');l.setAttribute('x1',a[0]);l.setAttribute('y1',a[1]);l.setAttribute('x2',b[0]);l.setAttribute('y2',b[1]);g.appendChild(l);return l}
+function ci(g,p,r,f){var c=document.createElementNS(NS,'circle');c.setAttribute('cx',p[0]);c.setAttribute('cy',p[1]);c.setAttribute('r',r);c.setAttribute('fill',f);c.setAttribute('opacity','0');g.appendChild(c);return c}
+(function(){
+var $=function(i){return document.getElementById('a_'+i)};
+var tips=[[92,22],[120,14],[96,78],[155,34],[180,30],[204,34],[240,14],[268,22],[264,78]];
+var dots=tips.map(function(){return ci($('dots'),[0,0],5,'#EF9F27')});
+var ntx=[166,172,178,182,188,194],rx=[159,180,201];
+var nts=ntx.map(function(){return ci($('nts'),[0,0],3,'#1D9E75')});
+var str=$('str'),go=$('go'),run=false,t0=0,END=6.8;
+function V(t,s){var pk=-70+3*s;if(t<1.4)return -70+(pk+70)*(t/1.4);
+if(s>=5){if(t<1.7)return pk+(40-pk)*((t-1.4)/.3);if(t<2.2)return 40-125*((t-1.7)/.5);if(t<3.2)return -85+15*(t-2.2);return -70}
+if(t<2.6)return pk+(-70-pk)*((t-1.4)/1.2);return -70}
+function gy(v){return 12+(50-v)*.5}
+function render(t){
+var s=+str.value,f=s>=5,i,p;
+for(i=0;i<9;i++){var d=dots[i];if(i<s&&t>0){p=cl((t-i*.05)/1.1);d.setAttribute('cx',tips[i][0]+(180-tips[i][0])*p);d.setAttribute('cy',tips[i][1]+(120-tips[i][1])*p);d.setAttribute('opacity',p>0&&p<1?1:0)}else d.setAttribute('opacity',0)}
+var g=.35*(s/9)*cl(t/1.4);
+if(f){if(t>=1.4)g=Math.max(g,.9*cl((t-1.4)/.2));if(t>2)g=.9*(1-cl((t-2)/.8))}else if(t>1.4)g=.35*(s/9)*(1-cl((t-1.4)));
+$('soma').setAttribute('opacity',g);
+var sp=$('spike'),hl=$('hl');
+if(f&&t>=1.8&&t<=3.9){var y=150+160*cl((t-1.8)/2);sp.setAttribute('cy',y);sp.setAttribute('opacity',1);hl.setAttribute('y2',y);hl.setAttribute('opacity',1)}
+else{sp.setAttribute('opacity',0);if(f&&t>3.9)hl.setAttribute('opacity',1-cl((t-3.9)/.7));else{hl.setAttribute('y2',150);hl.setAttribute('opacity',0)}}
+var vs=$('ves').children;
+for(i=0;i<3;i++){vs[i].setAttribute('cy',(i==1?311:308)+(f?10*cl((t-3.9)/.5):0));vs[i].setAttribute('opacity',f?1-.75*cl((t-4)/.5):1)}
+for(i=0;i<6;i++){var c=nts[i];if(f&&t>4.2){var q=cl((t-4.2-i*.07)/.9);c.setAttribute('cx',ntx[i]+(rx[i%3]-ntx[i])*q);c.setAttribute('cy',322+36*q);c.setAttribute('opacity',q>0&&q<1?1:0)}else c.setAttribute('opacity',0)}
+$('post').setAttribute('opacity',f&&t>5.2?.7*cl((t-5.2)/.4)*(1-cl((t-6.1)/.7)):0);
+var x;
+if(t<=0)x='Выберите силу стимула и запустите импульс.';
+else if(t<1.4)x='1. Дендриты принимают сигналы от других нейронов. Активных входов: '+s+' из 9.';
+else if(!f)x='Суммы сигналов не хватило: порог не достигнут, и импульса нет. Нейрон работает по принципу «всё или ничего».';
+else if(t<1.8)x='2. В теле клетки сигналы суммируются. Порог превышен, и запускается потенциал действия.';
+else if(t<3.9)x='3. Импульс бежит по аксону, перепрыгивая между перехватами в миелиновой оболочке. Так быстрее.';
+else if(t<4.4)x='4. Импульс достиг окончания аксона. Пузырьки выбрасывают нейромедиатор в синаптическую щель.';
+else x='5. Молекулы нейромедиатора садятся на рецепторы, и сигнал передаётся следующему нейрону.';
+$('st').textContent=x;
+var pts=[];for(var tt=0;tt<=Math.min(t,END);tt+=.05)pts.push((30+tt/END*315).toFixed(1)+','+gy(V(tt,s)).toFixed(1));
+if(t<=0)pts=['30,'+gy(-70)];
+$('v').setAttribute('points',pts.join(' '))}
+function frame(n){if(!run)return;var t=(n-t0)/1000;if(t>=END){render(END);run=false;go.textContent='Повторить';return}render(t);requestAnimationFrame(frame)}
+go.onclick=function(){if(run)return;run=true;t0=performance.now();go.textContent='Идёт передача…';requestAnimationFrame(frame)};
+str.oninput=function(){$('out').textContent=str.value+' из 9';if(!run)render(0)};
+render(0)})();
+
+(function(){
+var $=function(i){return document.getElementById('b_'+i)};
+var N1=[[90,50],[180,50],[270,50]],N2=[[55,190],[135,190],[225,190],[305,190]],N3=[[120,330],[240,330]];
+var w1,w2,e1=[],e2=[],reps=0,run=false,t0=0,done=false,rested=false,i,j,k;
+for(i=0;i<3;i++){e1[i]=[];for(j=0;j<4;j++)e1[i][j]=ln($('e'),N1[i],N2[j])}
+for(j=0;j<4;j++){e2[j]=[];for(k=0;k<2;k++)e2[j][k]=ln($('e'),N2[j],N3[k])}
+function init(){w1=[];w2=[];for(i=0;i<3;i++){w1[i]=[];for(j=0;j<4;j++)w1[i][j]=.15+Math.random()*.1}
+for(j=0;j<4;j++){w2[j]=[];for(k=0;k<2;k++)w2[j][k]=.15+Math.random()*.1}
+w1[0][1]=.18;w2[1][0]=.18;reps=0}
+function S(){return w1[0][1]*w2[1][0]}
+function paint(l,w){l.setAttribute('stroke-width',(1+6*w).toFixed(2));l.setAttribute('opacity',(.2+.8*w).toFixed(2))}
+function render(){
+for(i=0;i<3;i++)for(j=0;j<4;j++)paint(e1[i][j],w1[i][j]);
+for(j=0;j<4;j++)for(k=0;k<2;k++)paint(e2[j][k],w2[j][k]);
+$('reps').textContent=reps;var s=S();$('pow').textContent=Math.round(s*100)+'%';
+var x;
+if(rested)x='Без повторений связи слабеют: так мы забываем то, чем не пользуемся.';
+else if(reps===0)x='Сейчас связи слабые: сигнал почти не доходит до выхода.';
+else if(s>.6)x='Связь закрепилась: сигнал проходит легко. Так формируется навык или воспоминание.';
+else if(reps<5)x='Нейроны, которые срабатывают вместе, укрепляют связь между собой. Путь становится толще.';
+else x='Синапсы на этом пути работают всё эффективнее, а остальные связи остаются тонкими.';
+$('st').textContent=x}
+function frame(n){
+var t=(n-t0)/1000,p=$('p'),g0=$('g0'),g1=$('g1'),g2=$('g2'),x,y,po=0,q;
+if(t>=1.6){[p,g0,g1,g2].forEach(function(o){o.setAttribute('opacity',0)});run=false;render();return}
+if(t<.2)g0.setAttribute('opacity',cl(t/.1)*.9);
+else if(t<.7){q=(t-.2)/.5;x=N1[0][0]+(N2[1][0]-N1[0][0])*q;y=N1[0][1]+(N2[1][1]-N1[0][1])*q;po=1;g0.setAttribute('opacity',.9*(1-cl((t-.2)/.3)))}
+else if(t<.9){g1.setAttribute('opacity',.9*cl((t-.7)/.1));x=N2[1][0];y=N2[1][1]}
+else if(t<1.4){q=(t-.9)/.5;x=N2[1][0]+(N3[0][0]-N2[1][0])*q;y=N2[1][1]+(N3[0][1]-N2[1][1])*q;po=1;g1.setAttribute('opacity',.9*(1-cl((t-.9)/.3)))}
+else g2.setAttribute('opacity',(.25+.7*S())*(1-cl((t-1.4)/.2)*.8));
+if(po){p.setAttribute('cx',x);p.setAttribute('cy',y);p.setAttribute('opacity',1)}else p.setAttribute('opacity',0);
+if(!done&&t>=1){done=true;w1[0][1]=Math.min(1,w1[0][1]+.1);w2[1][0]=Math.min(1,w2[1][0]+.1);reps++;render()}
+requestAnimationFrame(frame)}
+$('train').onclick=function(){if(run)return;rested=false;run=true;done=false;t0=performance.now();requestAnimationFrame(frame)};
+$('rest').onclick=function(){if(run)return;rested=true;
+for(i=0;i<3;i++)for(j=0;j<4;j++)w1[i][j]=Math.max(.1,w1[i][j]*.8);
+for(j=0;j<4;j++)for(k=0;k<2;k++)w2[j][k]=Math.max(.1,w2[j][k]*.8);render()};
+$('reset').onclick=function(){if(run)return;rested=false;init();render()};
+init();render()})();
+
+(function(){
+var $=function(i){return document.getElementById('c_'+i)};
+var H=[[100,80],[160,108],[220,80],[280,108]],C=[[60,300],[120,328],[180,300],[240,328],[300,300]];
+var hp=[[0,1],[1,2],[2,3],[0,2],[1,3],[0,3]],cp=[[0,1],[1,2],[2,3],[3,4],[0,2],[2,4]],i;
+var hE=hp.map(function(p){return ln($('h'),H[p[0]],H[p[1]])});
+var cE=cp.map(function(p){return ln($('c'),C[p[0]],C[p[1]])});
+for(i=0;i<4;i++){ln($('x'),H[i],C[i]);ln($('x'),H[i],C[i+1])}
+var hG=H.map(function(p){return ci($('gl'),p,13,'#EF9F27')}),cG=C.map(function(p){return ci($('gl'),p,13,'#EF9F27')});
+var h=0,c=0,anim=null,label='Утро',INTRO='Утро. Новых воспоминаний пока нет. Нажмите «День», чтобы выучить что-нибудь новое.',txt=INTRO;
+function render(){
+hE.forEach(function(l){l.setAttribute('stroke-width',(1+6*h).toFixed(2));l.setAttribute('opacity',(.12+.88*h).toFixed(2))});
+cE.forEach(function(l){l.setAttribute('stroke-width',(1+6*c).toFixed(2));l.setAttribute('opacity',(.12+.88*c).toFixed(2))});
+$('hP').textContent=Math.round(h*100)+'%';$('cP').textContent=Math.round(c*100)+'%';
+$('st').textContent=txt;$('clkT').textContent=label;$('clk').setAttribute('fill',label==='Ночь'?'#7F77DD':'#EF9F27')}
+function clr(){hG.concat(cG).forEach(function(g){g.setAttribute('opacity',0)});$('p').setAttribute('opacity',0)}
+function frame(now){
+if(!anim)return;var t=(now-anim.t0)/1000,p=$('p');
+if(anim.type==='day'){
+if(t>=2.2){h=anim.tgt;anim=null;clr();txt='День: новая информация быстро записывается в гиппокамп, но запись пока непрочная.';render();return}
+h=anim.h0+(anim.tgt-anim.h0)*cl(t/2);
+var sg=Math.min(2,Math.floor(t/.55)),q=cl((t-sg*.55)/.55);
+if(t<1.65){p.setAttribute('cx',H[sg][0]+(H[sg+1][0]-H[sg][0])*q);p.setAttribute('cy',H[sg][1]+(H[sg+1][1]-H[sg][1])*q);p.setAttribute('opacity',1)}else p.setAttribute('opacity',0);
+for(var n=0;n<4;n++)hG[n].setAttribute('opacity',.8*(1-cl(Math.abs(t-.55*n)/.3)));
+render()}
+else{
+var R=anim.R,dur=R*.55+.3,dn=Math.min(R,Math.floor(t/.55));
+while(anim.ap<dn){c=c+(1-c)*.14;h=Math.max(.05,h-.045);anim.ap++}
+if(t>=dur){anim=null;clr();label='Утро';txt=c>.7?'Утро: воспоминание закрепилось в коре, а гиппокамп освободился для новой информации.':'Сна было мало: воспоминание закрепилось лишь частично, и многое вскоре забудется.';render();return}
+var r=Math.min(R-1,Math.floor(t/.55)),q2=cl((t-r*.55)/.55),k=r%4,m=k+(r%2);
+clr();
+if(t<R*.55){if(q2<.7){var pp=q2/.7;p.setAttribute('cx',H[k][0]+(C[m][0]-H[k][0])*pp);p.setAttribute('cy',H[k][1]+(C[m][1]-H[k][1])*pp);p.setAttribute('opacity',1);hG[k].setAttribute('opacity',.8*(1-pp))}
+else cG[m].setAttribute('opacity',.8*(1-(q2-.7)/.3))}
+render()}
+requestAnimationFrame(frame)}
+$('day').onclick=function(){if(anim)return;label='День';txt='День: новая информация записывается в гиппокамп.';anim={type:'day',t0:performance.now(),h0:h,tgt:Math.min(1,h+.6)};render();requestAnimationFrame(frame)};
+$('night').onclick=function(){if(anim)return;
+if(h<.1&&c<.05){txt='Закреплять пока нечего. Сначала нажмите «День» и выучите что-нибудь новое.';render();return}
+label='Ночь';txt='Ночь: гиппокамп «проигрывает» запись заново и передаёт её коре. Связи в коре понемногу укрепляются.';
+anim={type:'night',t0:performance.now(),R:Math.round(+$('hrs').value*1.5),ap:0};render();requestAnimationFrame(frame)};
+$('reset').onclick=function(){if(anim)return;h=0;c=0;label='Утро';txt=INTRO;clr();render()};
+$('hrs').oninput=function(){$('out').textContent=$('hrs').value+' ч'};
+render()})();
+</script></body></html>
